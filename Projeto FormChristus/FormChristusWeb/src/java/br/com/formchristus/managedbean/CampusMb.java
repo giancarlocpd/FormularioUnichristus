@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.formchristuss.managedbean;
+package br.com.formchristus.managedbean;
 
-import br.com.formchristuus.controller.CampusController;
+import br.com.formchristus.controller.CampusController;
 import br.com.formchristus.modelo.Campus;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,9 +40,13 @@ public class CampusMb extends BeanGenerico<Campus> implements Serializable {
     @PostConstruct
     @Override
     public void iniciar() {
-      //  campus = new Campus();
-        campus = (Campus) beanUtilitario.getRegistroDoMap("campus", new Campus());
-        listaCampus = new ArrayList<>();
+        try {
+            //  campus = new Campus();
+            campus = (Campus) beanUtilitario.getRegistroDoMap("campus", new Campus());
+            listaCampus = controller.listarTodos("nome");
+        } catch (Exception ex) {
+            Logger.getLogger(CampusMb.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

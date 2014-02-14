@@ -4,7 +4,7 @@
  */
 package br.com.fomrchristus.converter;
 
-import br.com.formchristuus.controller.CampusController;
+import br.com.formchristus.controller.CampusController;
 import br.com.formchristus.modelo.Campus;
 import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
@@ -27,7 +27,7 @@ public class ConverterCampus implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         try {
             if (!"".equals(string)) {
-                Integer id = Integer.getInteger(string);
+                Integer id = Integer.decode(string);
                 Campus m = (Campus) dao.carregar(id);
                 return m;
             } else {

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.formchristuss.managedbean;
+package br.com.formchristus.managedbean;
 
-import br.com.formchristuus.controller.CursoController;
+import br.com.formchristus.controller.CursoController;
+import br.com.formchristus.enumerated.TipoCurso;
 import br.com.formchristus.enumerated.Turno;
 import br.com.formchristus.modelo.Curso;
 import java.io.Serializable;
@@ -52,7 +53,7 @@ public class CursoMb extends BeanGenerico<Curso> implements Serializable {
             BeanMenssagem.addMenssagemInfo(beanUtilitario.getMsg("cadastro"));
             iniciar();
         } catch (Exception ex) {
-            BeanMenssagem.addMenssagemInfo(beanUtilitario.getMsg("erro"));
+            BeanMenssagem.addMenssagemErro(beanUtilitario.getMsg("erro"));
             Logger.getLogger(CursoMb.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -90,6 +91,10 @@ public class CursoMb extends BeanGenerico<Curso> implements Serializable {
     
     public Turno[] turnos(){
         return Turno.values();
+    }
+    
+    public TipoCurso[] tipoCursos(){
+        return TipoCurso.values();
     }
 
 }

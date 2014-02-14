@@ -16,8 +16,8 @@ and open the template in the editor.
             <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
         </f:facet>
-        <link rel="shortcut icon" href="../imagens/logo.ico" />
-        <link rel="icon" type="image/png" href="../imagens/logo.ico" />
+        <link rel="shortcut icon"  href="resources/imagens/logo.ico" />
+        <link rel="icon" type="image/png" href="resources/imagens/logo.ico" />
         <h:outputStylesheet name="/estilo/default.css"/>
         <h:outputStylesheet name="/estilo/pgerro.css"/>
         <h:outputScript name="calendario_pt_BR.js" library="script" />
@@ -25,7 +25,8 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <p:layout fullPage="true" id="bd">
-            <p:layoutUnit id="top"   position="north" size="100" style="margin-top: 0px;margin-bottom: 0px;" collapseSize="20" >
+            <p:layoutUnit id="top"   position="north" size="80" style="margin-top: 0px;margin-bottom: 0px;" collapseSize="20" >
+                <p:graphicImage url="resources/imagens/logo.png"/>
                 <h:form>
                     <p:growl showDetail="true" showSummary="true" autoUpdate="true" globalOnly="true"/>
                 </h:form>
@@ -60,7 +61,7 @@ and open the template in the editor.
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="center" style="text-align: center;" header="Sistema de Controle de Acessos" >
+            <p:layoutUnit position="center" style="text-align: center;" header="#{mensagens['nome.sistema']}" >
                 <h:form>
                     <p:growl autoUpdate="true" showDetail="true" showSummary="true"/>
                 </h:form>

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.formchristuss.managedbean;
+package br.com.formchristus.managedbean;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
