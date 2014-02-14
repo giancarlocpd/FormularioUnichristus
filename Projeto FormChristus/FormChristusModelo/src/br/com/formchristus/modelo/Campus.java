@@ -1,6 +1,7 @@
 package br.com.formchristus.modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,18 +19,12 @@ public class Campus implements Serializable{
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "cam_id",nullable = false)
-	private int id;
+	private Integer id;
         @NotBlank
 	@Column(name = "cam_nome",nullable = false,unique = true) 
 	private String nome;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+   
 
     public String getNome() {
         return nome;
@@ -39,10 +34,18 @@ public class Campus implements Serializable{
         this.nome = nome;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + this.id;
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -55,12 +58,13 @@ public class Campus implements Serializable{
             return false;
         }
         final Campus other = (Campus) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-        
+
+   
         
 	 
 }
