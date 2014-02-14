@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.formchristus.managedbean;
+package br.com.formchristuss.managedbean;
 
-import br.com.formChristus.controller.CampusController;
+import br.com.formchristuus.controller.CampusController;
 import br.com.formchristus.modelo.Campus;
 import java.io.Serializable;
 import java.util.ArrayList;

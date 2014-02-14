@@ -4,7 +4,7 @@
  */
 package br.com.fomrchristus.converter;
 
-import br.com.formChristus.controller.CampusController;
+import br.com.formchristuus.controller.CampusController;
 import br.com.formchristus.modelo.Campus;
 import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
