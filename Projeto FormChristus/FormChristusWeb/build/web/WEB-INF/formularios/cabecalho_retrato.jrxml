@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecalho_retrato" language="groovy" pageWidth="555" pageHeight="802" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d0320bbd-af32-43de-88f4-74e8fe2a0327">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="img" class="java.lang.String"/>
+	<parameter name="form" class="java.lang.String"/>
+	<noData>
+		<band height="65">
+			<rectangle>
+				<reportElement uuid="a02fa0e5-f138-49b3-8d36-dbcf12e7b5d4" x="0" y="0" width="555" height="63"/>
+			</rectangle>
+			<image>
+				<reportElement uuid="05441ab5-b3c2-48eb-9a54-46e4bd461397" x="5" y="7" width="406" height="48"/>
+				<imageExpression><![CDATA[$P{img}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="fb7992f5-0c71-4d26-84c5-1127d5afa5bd" x="442" y="4" width="100" height="56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="40"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{form}]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

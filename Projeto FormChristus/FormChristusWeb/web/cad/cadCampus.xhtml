@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/modelo/template.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="corpo">
+       
+            <h:panelGrid width="100%" id="grd">
+                <h:panelGrid width="100%">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Código"/>
+                    </h:panelGrid>
+                    <p:inputText id="id" size="7" disabled="true"  value="#{campusMb.campus.id}" />
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <h:panelGrid width="100%">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel  value="Nome"/>
+                            <p:message for="nome"  showDetail="true"  />
+                        </h:panelGrid>
+                        <p:inputText id="nome" size="50" required="true"   value="#{campusMb.campus.nome}" />
+                    </h:panelGrid>
+
+                </h:panelGrid>
+
+            </h:panelGrid>
+            <h:panelGrid  columns="3" cellspacing="22" cellpadding="2">
+                <p:commandButton value="Salvar" icon="ui-icon-disk" action="#{campusMb.salvar()}"   update="grd"/>
+                <p:commandButton icon="ui-icon-search" value="Listagem" />
+                <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" update=":frmGeral:grd" immediate="true" action="#{campusMb.iniciar()}" >
+                     <p:resetInput target=":frmGeral:grd"/>
+                </p:commandButton>
+            </h:panelGrid>
+     
+    </ui:define>
+
+</ui:composition>

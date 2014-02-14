@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:sef="http://sefin.ce.gov.br"
+                xmlns:wsosft="http://www.springframework.org/security/facelets/tags">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        </f:facet>
+        <link rel="shortcut icon" href="../imagens/logo.ico" />
+        <link rel="icon" type="image/png" href="../imagens/logo.ico" />
+        <h:outputStylesheet name="/estilo/default.css"/>
+        <h:outputStylesheet name="/estilo/pgerro.css"/>
+        <h:outputScript name="calendario_pt_BR.js" library="script" />
+        <title>#{mensagens['nome.sistema']}</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true" id="bd">
+            <p:layoutUnit id="top"   position="north" size="100" style="margin-top: 0px;margin-bottom: 0px;" collapseSize="20" >
+                <h:form>
+                    <p:growl showDetail="true" showSummary="true" autoUpdate="true" globalOnly="true"/>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="200" collapsible="true" header="Menu" style="text-align: center;">
+                <h:form>
+                    <p:commandButton style="width: 100%" value="Inicio" immediate="true" action="#{beanUtilitario.redirecionarPagina(navegacao['sistema.home'],'Formulários')}" update=":frmGeral" icon="ui-icon-home"/>
+
+                    <p:panelMenu   >
+                        <p:submenu label="Cadastros Basicos" >
+                            <p:submenu  label="Cadastros">
+                                <p:separator/>
+                                <p:separator/>
+                                <p:menuitem value="Campus"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCampus'],'Cadastro de Campus')}"/>
+                                <p:separator/>
+                                <p:separator/>
+                                <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCurso'], 'Cadastro de Curso')}"/>
+                                <p:separator/>
+                                <p:separator/>
+                                <p:menuitem value="Aluno"   update=":frmGeral"  action="/cad/cadAluno.xhtml"/>
+                            </p:submenu>
+                            <p:submenu  label="Listas">
+
+                            </p:submenu>
+                        </p:submenu>
+                        <p:submenu  label="Formulários">
+
+                        </p:submenu>
+                    </p:panelMenu>
+                    <p:commandButton style="width: 100%" value="Sair" action="#{beanUtilitario.logout()}"  global="false" icon="ui-icon-closethick"/>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" style="text-align: center;" header="Sistema de Controle de Acessos" >
+                <h:form>
+                    <p:growl autoUpdate="true" showDetail="true" showSummary="true"/>
+                </h:form>
+
+                <p:panel footer="Usuário:" header="#{beanUtilitario.pnl}" id="formcenter" style="min-height: 400px;">
+                    <h:form id="frmGeral">
+                        <p:messages id="msg" autoUpdate="true" closable="true" showDetail="true" showSummary="true"/>
+                        <center>
+                            <ui:insert name="corpo"></ui:insert>
+                        </center>
+                    </h:form>
+                </p:panel>
+
+            </p:layoutUnit>
+            <p:layoutUnit id="bottom" position="south" size="68" style="width: 100%;">
+
+            </p:layoutUnit>
+
+
+        </p:layout>
+        <ui:insert name="dialogs">
+
+        </ui:insert>
+    </h:body>
+
+
+</ui:composition>

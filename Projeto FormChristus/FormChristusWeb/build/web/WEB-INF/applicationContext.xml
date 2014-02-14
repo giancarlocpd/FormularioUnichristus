@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    <http auto-config="true" access-denied-page="/login.xhtml">
+        <form-login login-page="/login.xhtml"  authentication-failure-url="/login.xhtml?erro=true"/>
+<!--        <logout logout-success-url="/login.xhtml" invalidate-session="true"  logout-url="/j_spring_security_logout" />  -->
+        <intercept-url pattern="/index.xhtml" access="ROLE_ALUNO" />
+        <intercept-url pattern="/cad/**" access="ROLE_ALUNO" />
+<!--        <session-management invalid-session-url="/login.xhtml?session=1">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>-->
+    </http>
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="md5"/>
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="SELECT u.alu_matricula ,u.alu_senha,u.alu_ativo from cadastro_basico.aluno u
+                                                            WHERE  (u.alu_ativo = TRUE) and (u.alu_matricula = ?)"
+                               authorities-by-username-query="SELECT  al.alu_matricula  ,'ROLE_' || al.pes_tipo from  cadastro_basico.aluno al 
+                                                                        WHERE al.alu_matricula = ?  "
+            />
+        </authentication-provider>
+        <authentication-provider>
+            <user-service>
+                <user name="adm" password="123" authorities="ROLE_ALUNO" />
+            </user-service>
+        </authentication-provider>
+
+    </authentication-manager>
+    <b:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <b:property name="jndiName" value="jdbc/form"/>
+    </b:bean>
+
+
+
+</b:beans>
+
+
+

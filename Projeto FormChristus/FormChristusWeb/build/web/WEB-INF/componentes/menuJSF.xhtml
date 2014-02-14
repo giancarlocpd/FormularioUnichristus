@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:h="http://java.sun.com/jsf/html">
+    <h:form>
+        <p:panel header="Menu" style="height: 400px;max-width: 200px;float: top">
+            <p:commandButton style="width: 100%" value="Inicio" action="/index.xhtml" update=":frmGeral" icon="ui-icon-home"/>
+            <p:panelMenu   >
+                <p:submenu label="Cadastros Basicos" >
+                    <p:submenu  label="Cadastros">
+                        <p:menuitem value="Campus"   update=":frmGeral"  action="/cad/cadCampus.xhtml"/>
+                        <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.navegar(navegacao['cadCurso'],'Cadastro de Curso')}"/>
+                        <p:menuitem value="Aluno"   update=":frmGeral"  action="/cad/cadAluno.xhtml"/>
+                    </p:submenu>
+                    <p:submenu  label="Listas">
+                        <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.navegar(navegacao['lisCurso'],'Lista de Curso')}"/>
+
+                    </p:submenu>
+                </p:submenu>
+                <p:submenu  label="Formulários">
+                    <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.navegar(navegacao['lisCurso'],'Lista de Curso')}"/>
+
+                </p:submenu>
+            </p:panelMenu>
+            <p:commandButton style="width: 100%" value="Sair" immediate="true" action="#{beanUtilitario.logout()}"  global="false" icon="ui-icon-closethick"/>
+        </p:panel>
+    </h:form>
+</ui:fragment>
+

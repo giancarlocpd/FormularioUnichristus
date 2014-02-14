@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+        <h:outputScript name="script/navegacao.js"/>
+        <h:panelGrid columns="2" width="100%">
+            <h:panelGrid width="100%"   id="grd">
+                <h:panelGrid  columns="2">
+                    <h:panelGrid width="100%">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Matricula"/>
+                            <p:message for="a4Mat"  showDetail="true"  />
+                        </h:panelGrid>
+                        <p:inputText id="a4Mat" size="10"  disabled="true" maxlength="9" required="true" value="#{a4Mb.a4.aluno.matricula}" />
+                    </h:panelGrid>
+                    <h:panelGrid width="100%">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Nome"/>
+                            <p:message for="alNomr"  showDetail="true"  />
+                        </h:panelGrid>
+                        <p:inputText id="alNomr" size="52"   disabled="true" required="true" value="#{a4Mb.a4.aluno.pessoa.nome}" />
+                    </h:panelGrid>
+                </h:panelGrid>
+                <h:panelGrid  width="100%">
+                    <h:panelGrid columns="2">
+                        <h:panelGrid width="100%">
+                            <h:panelGrid columns="2">
+                                <p:outputLabel for="curNome" value="Curso"/>
+                                <p:message for="curNome"  showDetail="true"  />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:inputText id="curNome"  size="50" required="true" disabled="true" value="#{a4Mb.a4.aluno.curso.nome}" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid width="100%">
+                            <h:panelGrid columns="1">
+                                <p:outputLabel for="dt" value="Data"/>
+                                <p:message for="dt"  showDetail="true"  />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:calendar id="dt"  size="10" required="true" effect="fade" navigator="true" showButtonPanel="true" value="#{a4Mb.a4.data}" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <h:panelGrid  width="100%" columns="2">
+                        <h:panelGrid columns="1" width="100%">
+                            <h:panelGrid width="100%">
+                                <h:panelGrid columns="2">
+                                    <p:outputLabel for="lc" value="Local"/>
+                                    <p:message for="lc"  showDetail="true"  />
+                                </h:panelGrid>
+                                <h:panelGrid columns="2">
+                                    <p:inputText id="lc"  size="65" required="true" value="#{a4Mb.a4.local}" />
+                                </h:panelGrid>
+                            </h:panelGrid>
+                            <h:panelGrid width="100%">
+                                <h:panelGrid columns="2">
+                                    <p:outputLabel for="in" value="Instituição"/>
+                                    <p:message for="in"  showDetail="true"  />
+                                </h:panelGrid>
+                                <h:panelGrid columns="2">
+                                    <p:inputText id="in"  size="65" required="true" value="#{a4Mb.a4.instituicao}" />
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:panelGrid>
+            <h:panelGrid width="100%">
+                <h:panelGrid  width="100%" columns="2">
+                    <p:outputLabel for="atvDesen" value="Atividade Desenvolvida"/>
+                    <p:message for="atvDesen"  showDetail="true"  />
+                </h:panelGrid>
+                <h:panelGrid columns="2"  width="100%">
+                    <p:inputTextarea id="atvDesen"  cols="59" rows="12" required="true"  value="#{a4Mb.a4.atividadeDensenvolvida}" />
+                </h:panelGrid>
+            </h:panelGrid>
+        </h:panelGrid>
+        <h:panelGrid  columns="4" cellspacing="22" cellpadding="2">
+            <p:commandButton value="Imprimir" immediate="true" icon="ui-icon-print"  onclick="popup('/FormWeb/RelatorioServlet.pdf')"  update=":frmGeral"/>
+            <p:commandButton value="Salvar" icon="ui-icon-disk"  action="#{a4Mb.salvar()}"   update=":frmGeral"/>
+            <p:commandButton icon="ui-icon-search" value="Listagem"  immediate="true" />
+            <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" />
+        </h:panelGrid>
+    </h:form>
+</ui:fragment>

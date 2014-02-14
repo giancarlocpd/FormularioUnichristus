@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./modelo/frmModLogin.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="corpo">
+        <p:panel header="Acesso" visible="true" closable="false" style="width: 250px;min-height: 100px;margin-top: 60px; margin-bottom: 50px "  >
+            <h:outputText value="Usuário ou senha incorretos!" rendered="#{param.erro}" style="color: darkred"/>
+            <form action="j_spring_security_check" method="post" style="margin-top: 20px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="j_username" value="Usuário:" />
+                    <p:inputText id="j_username" required="true"/>
+                    <p:outputLabel for="j_password" value="Senha:" />
+                    <p:password id="j_password" required="true" />
+                </h:panelGrid>
+                <h:commandButton class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" style="margin-left: 120px;margin-top: 10px ;height: 30px;width: 80px" value="Entrar"/>
+            </form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

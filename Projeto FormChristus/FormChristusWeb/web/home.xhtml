@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:form>
+        <p:panel >
+            
+            <h:panelGrid width="50%" cellspacing="20"  columns="2">
+                <p:commandButton value="A4" icon="ui-icon-document"  update=":frmGeral,:pnlGeral"  action="#{beanUtilitario.navegar(navegacao['a4'],'Formulárop A4')}"/>
+                <p:commandButton value="A1" icon="ui-icon-document"  update=":frmGeral,:pnlGeral"  action="#{beanUtilitario.navegar(navegacao['a4'],'Formulárop A4')}"/>
+                <p:commandButton value="A2" icon="ui-icon-document"  update=":frmGeral,:pnlGeral"  action="#{beanUtilitario.navegar(navegacao['a4'],'Formulárop A4')}"/>
+                <p:commandButton value="A3" icon="ui-icon-document"  update=":frmGeral,:pnlGeral"  action="#{beanUtilitario.navegar(navegacao['a4'],'Formulárop A4')}"/>
+
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+
+
+</ui:fragment>
