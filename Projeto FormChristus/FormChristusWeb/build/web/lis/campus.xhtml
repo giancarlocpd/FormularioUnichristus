@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<ui:composition template="/modelo/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="corpo">
+        <h:form id="frmCampus">
+
+            <p:panel styleClass="painelPadrao">
+                <p:blockUI block="grd" trigger="btnListar" widgetVar="bui">
+                    <p:graphicImage  library="imagens" name="logo.png" />
+                </p:blockUI>
+                <p:focus/>
+                <h:panelGrid width="100%" id="grd">
+                    <p:fieldset legend="Consulta">
+                        <h:panelGrid columns="4">
+                            <h:panelGrid>
+                                <p:outputLabel value="Buscar por"/>
+                                <p:inputText value="#{campusMb.valorBusca}" />
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:spacer width="15"/>
+                                <h:panelGrid columns="2">
+                                    <p:commandButton action="#{campusMb.listarNome()}" id="btnListar"  update="tabela" value="Consultar" icon="ui-icon-search"/>
+                                    <p:commandButton action="#{beanUtilitario.redirecionarPagina(navegacao['cadCampus'], 'Cadastro de Campus')}" immediate="true" value="Incluir" icon="ui-icon-plus"/>
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:fieldset>
+                    <p:dataTable value="#{campusMb.listaCampus}" id="tabela" paginatorAlwaysVisible="false" paginator="true" var="t" rows="10" rowStyleClass="#{empty rowIx or rowIx mod 2 ne 0 ? 'even-row' : 'odd-row'}" rowIndexVar="rowIx" emptyMessage="Nenhum valor encontrado">
+                        <p:column headerText="Código" width="60" sortBy="#{t.id}">
+                            <h:outputText value="#{t.id}"/>
+                        </p:column>
+                        <p:column headerText="Nome" sortBy="#{t.nome}">
+                            <h:outputText value="#{t.nome}"/>
+                        </p:column>
+
+                        <p:column headerText="Ação" width="10%">
+                            <p:commandButton icon="ui-icon-check" style="width: 20px;height: 20px;" immediate="true" title="Editar" action="#{beanUtilitario.redirecionar(navegacao['cadCampus'], 'campus', t, 'Cadastro de Campus')}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
