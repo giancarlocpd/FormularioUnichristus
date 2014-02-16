@@ -36,12 +36,14 @@ and open the template in the editor.
                 <h:form>
                     <p:commandButton style="width: 100%" value="Inicio" immediate="true" action="#{beanUtilitario.redirecionarPagina(navegacao['sistema.home'],'Formulários')}" update=":frmGeral" icon="ui-icon-home"/>
 
-                    <p:panelMenu   >
+                    <p:panelMenu>
                         <p:submenu label="Cadastros Basicos" >
                             <p:submenu  label="Cadastros">
                                 <p:menuitem value="Campus"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCampus'],'Cadastro de Campus')}"/>
                                 <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCurso'], 'Cadastro de Curso')}"/>
                                 <p:menuitem value="Aluno"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadAluno'], label['cadAluno'])}"/>
+                                <p:menuitem value="Usuário"  update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadUsuario'], label['cadUsuario'])}"/>
+
                             </p:submenu>
                             <p:submenu  label="Listas">
                                 <p:menuitem value="Campus"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisCampus'],label['lisCampus'])}"/>

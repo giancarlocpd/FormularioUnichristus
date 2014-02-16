@@ -6,6 +6,7 @@
     <class>br.com.formchristus.modelo.Campus</class>
     <class>br.com.formchristus.modelo.Curso</class>
     <class>br.com.formchristus.modelo.Aluno</class>
+    <class>br.com.formchristus.modelo.Usuario</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.show_sql" value="true"/>

@@ -6,10 +6,13 @@
 package br.com.formchristus.managedbean;
 
 import br.com.formchristus.controller.AlunoController;
+import br.com.formchristus.controller.UsuarioController;
 import br.com.formchristus.enumerated.Sexo;
+import br.com.formchristus.enumerated.TipoPessoa;
 import br.com.formchristus.modelo.Aluno;
 import br.com.formchristus.modelo.AtividadeComplementar;
 import br.com.formchristus.modelo.Pessoa;
+import br.com.formchristus.modelo.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,9 @@ public class AlunoMb extends BeanGenerico<Aluno> implements Serializable {
     private BeanUtilitario beanUtilitario;
     @EJB
     private AlunoController controller;
+    @EJB
+    private UsuarioController usuarioController;
+    private Usuario usuario;
     private Aluno aluno;
     private List<Aluno> listaAlunos;
     private Pessoa pessoa;
@@ -58,6 +64,7 @@ public class AlunoMb extends BeanGenerico<Aluno> implements Serializable {
             renderMatricula = false;
             
         }
+        usuario = new Usuario();
         listaAlunos = new ArrayList<>();
 
     }
@@ -65,10 +72,14 @@ public class AlunoMb extends BeanGenerico<Aluno> implements Serializable {
     @Override
     public void salvar() {
         try {
+            TipoPessoa tp = TipoPessoa.ALUNO;
             pessoa.setAtivo(ativo);
             pessoa.setSexo(sexo);
             aluno.setPessoa(pessoa);
             controller.salvarouAtualizar(aluno);
+            usuarioController.registrarUsuario(aluno.getMatricula(),tp,aluno.getCurso());
+         
+            
             BeanMenssagem.addMenssagemInfo(beanUtilitario.getMsg("cadastro"));
             iniciar();
         } catch (Exception ex) {
