@@ -57,6 +57,10 @@ public class CursoMb extends BeanGenerico<Curso> implements Serializable {
             Logger.getLogger(CursoMb.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public void listarNome(){
+        listaCursos = controller.listarNome(getValorBusca());
+    }
 
     @Override
     public void excluir() {

@@ -66,6 +66,10 @@ public class CampusMb extends BeanGenerico<Campus> implements Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void listarNome(){
+        listaCampus = controller.listarNome(getValorBusca());
+    }
+    
     @Override
     public void listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

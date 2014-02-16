@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "aluno", schema = "cadastro_basico")
@@ -22,7 +20,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Aluno implements Serializable{
         @Id
         @Column(name = "alu_matricula", nullable = false)
-	private String matrciula;
+	private String matricula;
  
         @Embedded
 	private Pessoa pessoa;
@@ -30,13 +28,7 @@ public class Aluno implements Serializable{
         @JoinColumn(name = "cur_id",referencedColumnName = "cur_id",nullable = false)
 	private Curso curso;
 
-    public String getMatrciula() {
-        return matrciula;
-    }
-
-    public void setMatrciula(String matrciula) {
-        this.matrciula = matrciula;
-    }
+   
 
     public Pessoa getPessoa() {
         return pessoa;
@@ -54,10 +46,18 @@ public class Aluno implements Serializable{
         this.curso = curso;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 67 * hash + Objects.hashCode(this.matrciula);
+        hash = 59 * hash + Objects.hashCode(this.matricula);
         return hash;
     }
 
@@ -70,11 +70,13 @@ public class Aluno implements Serializable{
             return false;
         }
         final Aluno other = (Aluno) obj;
-        if (!Objects.equals(this.matrciula, other.matrciula)) {
+        if (!Objects.equals(this.matricula, other.matricula)) {
             return false;
         }
         return true;
     }
+
+ 
 	 
         
 }

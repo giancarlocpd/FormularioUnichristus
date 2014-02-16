@@ -8,7 +8,9 @@ package br.com.formchristus.dao;
 
 import br.com.formchristus.modelo.Campus;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -19,6 +21,13 @@ public class CampusDao extends DAO<Campus> implements Serializable{
 
     public CampusDao() {
         super(Campus.class);
+    }
+
+    public List<Campus> listarNome(String nome) {
+        TypedQuery<Campus> q;
+        q = getEm().createQuery("SELECT c FROM Campus c WHERE c.nome LIKE :nome", Campus.class);
+        q.setParameter("nome", "%"+nome+"%");
+        return q.getResultList();
     }
     
 }

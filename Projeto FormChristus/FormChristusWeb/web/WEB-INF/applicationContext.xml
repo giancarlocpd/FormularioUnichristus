@@ -9,12 +9,12 @@
 
     <http auto-config="true" access-denied-page="/login.xhtml">
         <form-login login-page="/login.xhtml"  authentication-failure-url="/login.xhtml?erro=true"/>
-<!--        <logout logout-success-url="/login.xhtml" invalidate-session="true"  logout-url="/j_spring_security_logout" />  -->
+        <logout logout-success-url="/login.xhtml" invalidate-session="true"  logout-url="/j_spring_security_logout" />  
         <intercept-url pattern="/index.xhtml" access="ROLE_ALUNO" />
         <intercept-url pattern="/cad/**" access="ROLE_ALUNO" />
-<!--        <session-management invalid-session-url="/login.xhtml?session=1">
+        <session-management invalid-session-url="/login.xhtml?session=1">
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
-        </session-management>-->
+        </session-management>
     </http>
     <authentication-manager>
         <authentication-provider>

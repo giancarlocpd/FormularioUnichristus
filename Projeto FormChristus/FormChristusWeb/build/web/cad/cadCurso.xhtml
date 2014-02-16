@@ -7,8 +7,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html">
     <ui:define name="corpo">
-
-        <h:panelGrid width="100%" id="grd">
+       
+        <h:panelGrid  width="100%" id="grd" >
 
             <h:panelGrid width="100%">
                 <h:panelGrid columns="2">
@@ -23,7 +23,7 @@
                             <p:outputLabel  value="Campus"/>
                             <p:message for="campus" showDetail="true"  />
                         </h:panelGrid>
-                        <p:selectOneMenu id="campus" required="true"  value="#{cursoMb.curso.campus}" style="width: 230px" converter="#{converterCampus}">
+                         <p:selectOneMenu id="campus" required="true" effect="fade"   value="#{cursoMb.curso.campus}" style="width: 230px" converter="#{converterCampus}">
                             <f:selectItems value="#{campusMb.listaCampus}" var="cam" itemLabel="#{cam.nome}" itemValue="#{cam}" />
                         </p:selectOneMenu>
                     </h:panelGrid>
@@ -62,7 +62,7 @@
         </h:panelGrid>
         <h:panelGrid  columns="3" cellspacing="22" cellpadding="2">
             <p:commandButton value="Salvar" icon="ui-icon-disk" action="#{cursoMb.salvar()}"   update="grd"/>
-            <p:commandButton icon="ui-icon-search" value="Listagem" />
+            <p:commandButton icon="ui-icon-search" value="Listagem" immediate="true" action="#{beanUtilitario.redirecionarPagina(navegacao['lisCurso'], label['lisCurso'])}" />
             <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" update=":frmGeral:grd" immediate="true" action="#{cursoMb.iniciar()}" >
                 <p:resetInput target=":frmGeral:grd"/>
             </p:commandButton>

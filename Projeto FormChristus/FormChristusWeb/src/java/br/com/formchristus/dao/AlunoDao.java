@@ -6,7 +6,7 @@
 
 package br.com.formchristus.dao;
 
-import br.com.formchristus.modelo.Curso;
+import br.com.formchristus.modelo.Aluno;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,17 +17,15 @@ import javax.persistence.TypedQuery;
  * @author Ari
  */
 @Stateless
-public class CursoDao extends DAO<Curso> implements Serializable{
-
-    public CursoDao() {
-        super(Curso.class);
+public class AlunoDao extends DAO<Aluno> implements Serializable{
+    public AlunoDao(){
+        super(Aluno.class);
     }
 
-      public List<Curso> listarNome(String nome) {
-        TypedQuery<Curso> q;
-        q = getEm().createQuery("SELECT c FROM Curso c WHERE c.nome LIKE :nome", Curso.class);
+  public List<Aluno> listarNome(String nome) {
+        TypedQuery<Aluno> q;
+        q = getEm().createQuery("SELECT a FROM Aluno a WHERE a.pessoa.nome LIKE :nome", Aluno.class);
         q.setParameter("nome", "%"+nome+"%");
         return q.getResultList();
     }
-    
 }

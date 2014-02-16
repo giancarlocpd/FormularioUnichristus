@@ -14,6 +14,16 @@ import javax.faces.context.FacesContext;
  */
 public abstract class BeanGenerico<T> extends BeanMenssagem {
 
+    public String valorBusca;
+
+    public String getValorBusca() {
+        return valorBusca;
+    }
+
+    public void setValorBusca(String valorBusca) {
+        this.valorBusca = valorBusca;
+    }
+    
     
 
     public BeanGenerico(Class classe) {

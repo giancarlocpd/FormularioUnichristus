@@ -9,6 +9,7 @@ package br.com.formchristus.controller;
 import br.com.formchristus.dao.CampusDao;
 import br.com.formchristus.modelo.Campus;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -26,6 +27,10 @@ public class CampusController extends ControllerGenerico<Campus, Integer> implem
     @PostConstruct
     private void setDao(){
         setDao(dao);
+    }
+
+    public List<Campus> listarNome(String nome) {
+        return dao.listarNome(nome);
     }
     
 }

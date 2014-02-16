@@ -15,5 +15,6 @@
         <tag-name>rodape</tag-name>
         <source>rodape.xhtml</source>
     </tag>
+    
 
 </facelet-taglib>

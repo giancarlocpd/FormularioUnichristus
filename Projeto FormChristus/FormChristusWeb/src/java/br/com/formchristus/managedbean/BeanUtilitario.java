@@ -136,6 +136,15 @@ public class BeanUtilitario implements Serializable {
         }
     }
 
+    public void redirecionar(String pag, String key, Object valor,String tit) {
+        try {
+            map.put(key, valor);
+        } catch (Exception e) {
+            Logger.getLogger(BeanUtilitario.class.getName()).log(Level.SEVERE, null, e);
+        }
+        redirecionarPagina(pag,tit);
+    }
+
     public String getPnl() {
         return pnl;
     }

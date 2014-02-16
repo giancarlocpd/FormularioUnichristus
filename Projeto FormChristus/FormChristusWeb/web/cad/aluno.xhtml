@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="/modelo/template.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:sec="http://www.springframework.org/security/facelets/tags">
+    <ui:define name="corpo">   
+         
+         <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_TESOURARIA,ROLE_CONTABILIDADE">
+            Lorem ipsum dolor sit amet
+         </sec:ifAnyGranted>
+        <h:panelGrid width="100%"   id="grd">
+
+            <h:panelGrid columns="2">
+                <h:panelGrid width="100%">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Matricula"/>
+                        <p:message for="matri"  showDetail="true"  />
+                    </h:panelGrid>
+                    <p:inputText id="matri" size="10" disabled="#{alunoMb.renderMatricula}" maxlength="9"  required="true" requiredMessage="#{mensagens.require}" value="#{alunoMb.aluno.matricula}" />
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <h:panelGrid width="100%">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel for="curNome" value="Curso"/>
+                            <p:message for="curNome"  showDetail="true"  />
+                        </h:panelGrid>
+                        <h:panelGrid id="grdCur" columns="2">
+                            <p:commandButton  icon="ui-icon-search" title="Lista de curso" immediate="true" onclick="dialogConsultaCurso.show()"  update=":frmGeral">
+                                <p:inputText id="curNome"  size="50" disabled="true" requiredMessage="#{mensagens.require}" required="true" value="#{alunoMb.aluno.curso.nome}" />
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:panelGrid>
+
+            <h:panelGrid width="100%">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Nome" for="aluNom"/>
+                    <p:message for="aluNom"/>
+                </h:panelGrid>
+                <p:inputText id="aluNom" size="67" required="true" requiredMessage="#{mensagens.require}" value="#{alunoMb.pessoa.nome}" />
+            </h:panelGrid>
+            <h:panelGrid width="100%">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Email" for="email"/>
+                    <p:message for="email"/>
+                </h:panelGrid>
+                <p:inputText id="email" size="67" required="true" requiredMessage="#{mensagens.require}" value="#{alunoMb.pessoa.email}" />
+            </h:panelGrid>
+            <h:panelGrid columns="1" cellspacing="5"  >
+                <h:panelGrid width="100%">
+                    <h:panelGrid columns="3">
+                        <p:outputLabel  value="Sexo"/>
+                        <p:message for="sex" showDetail="true"  />
+                    </h:panelGrid>
+                    <p:selectOneMenu id="sex" required="true"  value="#{alunoMb.sexo}" style="width: 150px">
+                        <f:selectItems value="#{alunoMb.sexos()}" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid width="100%">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Ativo"/>                  
+                    </h:panelGrid>
+                    <p:selectOneRadio value="#{alunoMb.ativo}" >
+                        <f:selectItem itemLabel="Não" itemEscaped="true"  itemValue="#{false}"/>
+                        <f:selectItem itemLabel="Sim"  itemValue="#{true}"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+            </h:panelGrid>
+
+        </h:panelGrid>
+        <h:panelGrid  columns="3" cellspacing="22" cellpadding="2">
+            <p:commandButton value="Salvar" icon="ui-icon-disk" action="#{alunoMb.salvar()}"   update=":frmGeral"/>
+            <p:commandButton icon="ui-icon-search" value="Listagem"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisAlunos'], label['lisAlunos'])}" immediate="true" />
+            <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" immediate="true" update=":frmGeral:grd" action="#{alunoMb.iniciar()}" >
+                <p:resetInput target=":frmGeral:grd"/>
+            </p:commandButton>
+        </h:panelGrid>
+
+    </ui:define>
+    <ui:define name="dialogs">
+        <ui:include src="#{navegacao['diaCurso']}"/>
+    </ui:define>
+
+    <ui:define name="comando">
+        <p:commandButton icon="ui-icon-check" style="width: 20px;height: 20px;" immediate="true" update=":frmGeral:grdCur" title="Selecionar"   oncomplete="dialogConsultaCurso.hide();">
+            <f:setPropertyActionListener value="#{t}" target="#{alunoMb.aluno.curso}"/>
+        </p:commandButton>
+    </ui:define>
+</ui:composition>

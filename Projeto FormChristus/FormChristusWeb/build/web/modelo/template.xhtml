@@ -16,17 +16,17 @@ and open the template in the editor.
             <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
         </f:facet>
-        <link rel="shortcut icon"  href="resources/imagens/logo.ico" />
-        <link rel="icon" type="image/png" href="resources/imagens/logo.ico" />
+        <link rel="shortcut icon"  href="../resources/imagens/logo.ico" />
+        <link rel="icon" type="image/png"  href="../resources/imagens/logo.ico" />
         <h:outputStylesheet name="/estilo/default.css"/>
         <h:outputStylesheet name="/estilo/pgerro.css"/>
         <h:outputScript name="calendario_pt_BR.js" library="script" />
         <title>#{mensagens['nome.sistema']}</title>
     </h:head>
-    <h:body>
+    <h:body >
         <p:layout fullPage="true" id="bd">
             <p:layoutUnit id="top"   position="north" size="80" style="margin-top: 0px;margin-bottom: 0px;" collapseSize="20" >
-                <p:graphicImage url="resources/imagens/logo.png"/>
+                <p:graphicImage  library="imagens" name="logo.png" />
                 <h:form>
                     <p:growl showDetail="true" showSummary="true" autoUpdate="true" globalOnly="true"/>
                 </h:form>
@@ -39,17 +39,14 @@ and open the template in the editor.
                     <p:panelMenu   >
                         <p:submenu label="Cadastros Basicos" >
                             <p:submenu  label="Cadastros">
-                                <p:separator/>
-                                <p:separator/>
                                 <p:menuitem value="Campus"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCampus'],'Cadastro de Campus')}"/>
-                                <p:separator/>
-                                <p:separator/>
                                 <p:menuitem value="Curso"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadCurso'], 'Cadastro de Curso')}"/>
-                                <p:separator/>
-                                <p:separator/>
-                                <p:menuitem value="Aluno"   update=":frmGeral"  action="/cad/cadAluno.xhtml"/>
+                                <p:menuitem value="Aluno"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['cadAluno'], label['cadAluno'])}"/>
                             </p:submenu>
                             <p:submenu  label="Listas">
+                                <p:menuitem value="Campus"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisCampus'],label['lisCampus'])}"/>
+                                <p:menuitem value="Cursos"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisCurso'],label['lisCurso'])}"/>
+                                <p:menuitem value="Alunos"   update=":frmGeral"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisAlunos'],label['lisAlunos'])}"/>
 
                             </p:submenu>
                         </p:submenu>
@@ -62,27 +59,31 @@ and open the template in the editor.
             </p:layoutUnit>
 
             <p:layoutUnit position="center" style="text-align: center;" header="#{mensagens['nome.sistema']}" >
+
                 <h:form>
                     <p:growl autoUpdate="true" showDetail="true" showSummary="true"/>
                 </h:form>
 
-                <p:panel footer="Usuário:" header="#{beanUtilitario.pnl}" id="formcenter" style="min-height: 400px;">
+                <p:panel footer="Usuário:" header="#{beanUtilitario.pnl}" id="formcenter" >
                     <h:form id="frmGeral">
                         <p:messages id="msg" autoUpdate="true" closable="true" showDetail="true" showSummary="true"/>
-                        <center>
+                        <center>                            
                             <ui:insert name="corpo"></ui:insert>
                         </center>
                     </h:form>
                 </p:panel>
 
             </p:layoutUnit>
-            <p:layoutUnit id="bottom" position="south" size="68" style="width: 100%;">
-
-            </p:layoutUnit>
+            <!--            <p:layoutUnit id="bottom" position="south" size="30" style="width: 100%;">
+            
+                        </p:layoutUnit>-->
 
 
         </p:layout>
         <ui:insert name="dialogs">
+
+        </ui:insert>
+        <ui:insert name="btn">
 
         </ui:insert>
     </h:body>
