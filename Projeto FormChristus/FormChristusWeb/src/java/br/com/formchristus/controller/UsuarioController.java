@@ -65,6 +65,7 @@ public class UsuarioController extends ControllerGenerico<Usuario, String> imple
        usuario.setLogin(matricula);
        usuario.setTipoPessoa(pessoa);
        usuario.setPeriodo(new Date());
+       usuario.setAtivo(true);
        usuario.setSenha(criptografarSenha(matricula));
        dao.salvar(usuario);
     }

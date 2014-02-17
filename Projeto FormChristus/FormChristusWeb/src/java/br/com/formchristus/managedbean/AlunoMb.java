@@ -72,12 +72,12 @@ public class AlunoMb extends BeanGenerico<Aluno> implements Serializable {
     @Override
     public void salvar() {
         try {
-            TipoPessoa tp = TipoPessoa.ALUNO;
+           
             pessoa.setAtivo(ativo);
             pessoa.setSexo(sexo);
             aluno.setPessoa(pessoa);
             controller.salvarouAtualizar(aluno);
-            usuarioController.registrarUsuario(aluno.getMatricula(),tp,aluno.getCurso());
+            usuarioController.registrarUsuario(aluno.getMatricula(),TipoPessoa.ALUNO,aluno.getCurso());
          
             
             BeanMenssagem.addMenssagemInfo(beanUtilitario.getMsg("cadastro"));
