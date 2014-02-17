@@ -28,13 +28,24 @@ public class Usuario implements Serializable {
     @NotBlank
     @Column(name = "usu_senha", nullable = false)
     private String senha;
-    @NotBlank
-    @Enumerated(EnumType.STRING)
     @Column(name = "usu_tipo", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TipoPessoa tipoPessoa;
     @Column(name = "usu_periodo", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date periodo;
+    @Column(name = "usu_ativo",nullable = false)
+    private boolean ativo;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     public String getLogin() {
         return login;
@@ -89,7 +100,5 @@ public class Usuario implements Serializable {
         }
         return true;
     }
-    
-    
 
 }
