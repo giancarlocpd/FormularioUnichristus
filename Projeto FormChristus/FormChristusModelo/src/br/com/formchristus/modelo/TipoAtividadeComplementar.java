@@ -21,7 +21,7 @@ public class TipoAtividadeComplementar implements Serializable {
     @Id
     @Column(name = "tp_atv_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     @NotBlank
     @Column(name = "tp_atv_nome", nullable = false)
     private String nome;
@@ -34,7 +34,7 @@ public class TipoAtividadeComplementar implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
