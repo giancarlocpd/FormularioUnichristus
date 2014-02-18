@@ -77,4 +77,37 @@ public class TipoAtividadeComplementarMb extends BeanGenerico<TipoAtividadeCompl
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public BeanUtilitario getBeanUtilitario() {
+        return beanUtilitario;
+    }
+
+    public void setBeanUtilitario(BeanUtilitario beanUtilitario) {
+        this.beanUtilitario = beanUtilitario;
+    }
+
+    public TipoAtividadeComplementarController getController() {
+        return controller;
+    }
+
+    public void setController(TipoAtividadeComplementarController controller) {
+        this.controller = controller;
+    }
+
+    public TipoAtividadeComplementar getTpAtividade() {
+        return tpAtividade;
+    }
+
+    public void setTpAtividade(TipoAtividadeComplementar tpAtividade) {
+        this.tpAtividade = tpAtividade;
+    }
+
+    public List<TipoAtividadeComplementar> getListaAtividades() {
+        return listaAtividades;
+    }
+
+    public void setListaAtividades(List<TipoAtividadeComplementar> listaAtividades) {
+        this.listaAtividades = listaAtividades;
+    }
+
+    
 }
