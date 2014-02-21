@@ -28,7 +28,7 @@
 
         </h:panelGrid>
         <h:panelGrid  columns="3" cellspacing="22" cellpadding="2">
-            <p:commandButton value="Salvar" id="btnSalvar" icon="ui-icon-disk" action="#{campusMb.salvar()}"   update="grd"/>
+            <p:commandButton value="Salvar" id="btnSalvar" icon="ui-icon-disk" action="#{campusMb.salvar()}" update="grd"/>
             <p:commandButton icon="ui-icon-search" value="Listagem" />
             <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" update=":frmGeral:grd" immediate="true" action="#{campusMb.iniciar()}" >
                 <p:resetInput target=":frmGeral:grd"/>

@@ -46,7 +46,7 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
     private boolean ativo;
     private boolean renderMatricula;
     private Usuario usuario;
-    private List<Professor> listaProfessor;
+    private List<Curso> listaCurso;
 
     public ProfessorMb() {
         super(Professor.class);
@@ -67,7 +67,7 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
 
         }
         usuario = new Usuario();
-        listaProfessor = new ArrayList<>();
+        listaCurso = new ArrayList<>();
 
     }
 
@@ -90,7 +90,7 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
     }
 
     public void listarNome() {
-        listaProfessor = controller.listarNome(getValorBusca());
+        listaCurso = controller.listaNome();
     }
 
     @Override
@@ -147,6 +147,10 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
+    
+     public Sexo[] sexos(){
+        return  Sexo.values();
+    }
 
     public Sexo getSexo() {
         return sexo;
@@ -180,12 +184,13 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
         this.usuario = usuario;
     }
 
-    public List<Professor> getListaProfessor() {
-        return listaProfessor;
+    public List<Curso> getListaCurso() {
+        return listaCurso;
     }
 
-    public void setListaProfessor(List<Professor> listaProfessor) {
-        this.listaProfessor = listaProfessor;
+    public void setListaCurso(List<Curso> listaCurso) {
+        this.listaCurso = listaCurso;
     }
+
 
 }

@@ -5,6 +5,7 @@
  */
 package br.com.formchristus.dao;
 
+import br.com.formchristus.modelo.Curso;
 import br.com.formchristus.modelo.Professor;
 import java.io.Serializable;
 import java.util.List;
@@ -28,6 +29,14 @@ public class ProfessorDAO extends DAO<Professor> implements Serializable {
         q.setParameter("nome", "%"+nome+"%");
         return q.getResultList();
 
+    }
+    
+    public List<Curso> listarCurso() {
+        String nome = null;
+        TypedQuery<Curso> q;
+        q = getEm().createQuery("SELECT c FROM Curso c WHERE c.nome LIKE :nome", Curso.class);
+        q.setParameter("nome", "%"+nome+"%");
+        return q.getResultList();
     }
 
 }

@@ -8,6 +8,7 @@ package br.com.formchristus.controller;
 
 import br.com.formchristus.dao.ProfessorDAO;
 import br.com.formchristus.modelo.Aluno;
+import br.com.formchristus.modelo.Curso;
 import br.com.formchristus.modelo.Professor;
 import java.io.Serializable;
 import java.util.List;
@@ -30,6 +31,10 @@ public class ProfessorController extends ControllerGenerico<Professor, String> i
     
     public List<Professor> listarNome(String valorBusca) {
         return dao.listarNome(valorBusca);
+    }
+    
+    public List<Curso> listaNome() {
+        return dao.listarCurso();
     }
     
 }
