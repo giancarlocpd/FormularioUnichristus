@@ -41,10 +41,9 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
     private Coordenador coordenador;
     private Pessoa pessoa;
     private Sexo sexo;
-    private boolean ativo;
     private boolean renderMatricula;
     private Usuario usuario;
-    private List<Coordenador> listaCurso;
+    private List<Coordenador> listaCoordenadores;
 
     public CoordenadorMb() {
         super(Coordenador.class);
@@ -57,7 +56,6 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
         if (coordenador.getMatrciula() != null) {
             pessoa = coordenador.getPessoa();
             sexo = pessoa.getSexo();
-            ativo = pessoa.isAtivo();
             renderMatricula = true;
         } else {
             pessoa = new Pessoa();
@@ -65,14 +63,13 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
 
         }
         usuario = new Usuario();
-        listaCurso = new ArrayList<>();
+        listaCoordenadores = new ArrayList<>();
 
     }
 
     @Override
     public void salvar() {
         try {
-            pessoa.setAtivo(ativo);
             pessoa.setSexo(sexo);
             coordenador.setPessoa(pessoa);
             controller.salvarouAtualizar(coordenador);
@@ -87,7 +84,7 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
     }
 
     public void listarNome() {
-        listaCurso = controller.listarNome(valorBusca);
+        listaCoordenadores = controller.listarNome(getValorBusca());
     }
 
     @Override
@@ -141,13 +138,6 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
         this.sexo = sexo;
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
 
     public boolean isRenderMatricula() {
         return renderMatricula;
@@ -173,12 +163,13 @@ public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializ
         this.coordenador = coordenador;
     }
 
-    public List<Coordenador> getListaCurso() {
-        return listaCurso;
+    public List<Coordenador> getListaCoordenadores() {
+        return listaCoordenadores;
     }
 
-    public void setListaCurso(List<Coordenador> listaCurso) {
-        this.listaCurso = listaCurso;
+    public void setListaCoordenadores(List<Coordenador> listaCoordenadores) {
+        this.listaCoordenadores = listaCoordenadores;
     }
 
+ 
 }

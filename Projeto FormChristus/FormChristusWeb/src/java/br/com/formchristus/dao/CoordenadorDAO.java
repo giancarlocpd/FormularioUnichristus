@@ -6,7 +6,6 @@
 package br.com.formchristus.dao;
 
 import br.com.formchristus.modelo.Coordenador;
-import br.com.formchristus.modelo.Curso;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;

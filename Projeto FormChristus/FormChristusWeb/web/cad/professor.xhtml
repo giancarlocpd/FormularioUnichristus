@@ -57,9 +57,9 @@ and open the template in the editor.
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
                 <h:outputText value="Cursos: " />  
-                <p:selectOneRadio id="grid" value="" layout="grid" columns="3">  
-                    <f:selectItems value=""/>  
-                </p:selectOneRadio>  
+                <h:selectManyCheckbox value="#{cursoMb.listarNome()}" layout="pageDirection" >
+                    <f:selectItems value="#{cursoMb.listaCursos}" />
+                </h:selectManyCheckbox>
             </h:panelGrid>  
 
         </h:panelGrid>
