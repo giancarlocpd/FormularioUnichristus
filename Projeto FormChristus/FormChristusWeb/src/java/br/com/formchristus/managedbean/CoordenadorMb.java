@@ -5,13 +5,13 @@
  */
 package br.com.formchristus.managedbean;
 
-import br.com.formchristus.controller.ProfessorController;
+import br.com.formchristus.controller.CoordenadorController;
 import br.com.formchristus.controller.UsuarioController;
 import br.com.formchristus.enumerated.Sexo;
 import br.com.formchristus.enumerated.TipoPessoa;
+import br.com.formchristus.modelo.Coordenador;
 import br.com.formchristus.modelo.Curso;
 import br.com.formchristus.modelo.Pessoa;
-import br.com.formchristus.modelo.Professor;
 import br.com.formchristus.modelo.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,32 +30,32 @@ import javax.inject.Inject;
  */
 @ManagedBean
 @ViewScoped
-public class ProfessorMb extends BeanGenerico<Professor> implements Serializable {
+public class CoordenadorMb extends BeanGenerico<Coordenador> implements Serializable {
 
     @Inject
     private BeanUtilitario beanUtilitario;
     @EJB
-    private ProfessorController controller;
+    private CoordenadorController controller;
     @EJB
     private UsuarioController usuarioController;
-    private Professor professor;
+    private Coordenador coordenador;
     private Pessoa pessoa;
     private Sexo sexo;
     private boolean ativo;
     private boolean renderMatricula;
     private Usuario usuario;
-    private List<Professor> listaProfessor;
+    private List<Coordenador> listaCurso;
 
-    public ProfessorMb() {
-        super(Professor.class);
+    public CoordenadorMb() {
+        super(Coordenador.class);
     }
 
     @Override
     @PostConstruct
     public void iniciar() {
-        professor = (Professor) beanUtilitario.getRegistroDoMap("professor", new Professor());
-        if (professor.getMatrciula() != null) {
-            pessoa = professor.getPessoa();
+        coordenador = (Coordenador) beanUtilitario.getRegistroDoMap("coordenador", new Coordenador());
+        if (coordenador.getMatrciula() != null) {
+            pessoa = coordenador.getPessoa();
             sexo = pessoa.getSexo();
             ativo = pessoa.isAtivo();
             renderMatricula = true;
@@ -65,7 +65,7 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
 
         }
         usuario = new Usuario();
-        listaProfessor = new ArrayList<>();
+        listaCurso = new ArrayList<>();
 
     }
 
@@ -74,21 +74,20 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
         try {
             pessoa.setAtivo(ativo);
             pessoa.setSexo(sexo);
-            professor.setPessoa(pessoa);
-            controller.salvarouAtualizar(professor);
-            //não sei como ficaria o parametro curso para o professor, já que ele contem um lista de cursos. Só se criar um metodo registarUsuario sem o prametro curso
-            usuarioController.registrarUsuario(professor.getMatrciula(), TipoPessoa.PROFESSOR, (Curso) professor.getCurso());
+            coordenador.setPessoa(pessoa);
+            controller.salvarouAtualizar(coordenador);
+            usuarioController.registrarUsuario(coordenador.getMatrciula(), TipoPessoa.COORDENADOR, coordenador.getCurso());
             BeanMenssagem.addMenssagemInfo(beanUtilitario.getMsg("cadastro"));
             iniciar();
         } catch (Exception ex) {
             BeanMenssagem.addMenssagemErro(beanUtilitario.getMsg("erro"));
-            Logger.getLogger(ProfessorMb.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CoordenadorMb.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
     public void listarNome() {
-        listaProfessor = controller.listarNome(getValorBusca());
+        listaCurso = controller.listarNome(valorBusca);
     }
 
     @Override
@@ -114,28 +113,12 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
         this.beanUtilitario = beanUtilitario;
     }
 
-    public ProfessorController getController() {
-        return controller;
-    }
-
-    public void setController(ProfessorController controller) {
-        this.controller = controller;
-    }
-
     public UsuarioController getUsuarioController() {
         return usuarioController;
     }
 
     public void setUsuarioController(UsuarioController usuarioController) {
         this.usuarioController = usuarioController;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
     }
 
     public Pessoa getPessoa() {
@@ -145,9 +128,9 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-    
-     public Sexo[] sexos(){
-        return  Sexo.values();
+
+    public Sexo[] sexos() {
+        return Sexo.values();
     }
 
     public Sexo getSexo() {
@@ -182,13 +165,20 @@ public class ProfessorMb extends BeanGenerico<Professor> implements Serializable
         this.usuario = usuario;
     }
 
-    public List<Professor> getListaProfessor() {
-        return listaProfessor;
+    public Coordenador getCoordenador() {
+        return coordenador;
     }
 
-    public void setListaProfessor(List<Professor> listaProfessor) {
-        this.listaProfessor = listaProfessor;
+    public void setCoordenador(Coordenador coordenador) {
+        this.coordenador = coordenador;
     }
 
+    public List<Coordenador> getListaCurso() {
+        return listaCurso;
+    }
+
+    public void setListaCurso(List<Coordenador> listaCurso) {
+        this.listaCurso = listaCurso;
+    }
 
 }

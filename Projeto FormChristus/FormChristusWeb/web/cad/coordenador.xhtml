@@ -23,14 +23,14 @@ and open the template in the editor.
                         <p:outputLabel value="Matricula"/>
                         <p:message for="matri"  showDetail="true"  />
                     </h:panelGrid>
-                    <p:inputText id="matri" size="10" disabled="#{professorMb.renderMatricula}" maxlength="9"  required="true" requiredMessage="#{mensagens.require}" value="#{professorMb.professor.matrciula}" />
+                    <p:inputText id="matri" size="10" disabled="#{coordenadorMb.renderMatricula}" maxlength="9"  required="true" requiredMessage="#{mensagens.require}" value="#{coordenadorMb.coordenador.matrciula}" />
                 </h:panelGrid>
                 <h:panelGrid width="100%">
                     <h:panelGrid columns="2">
-                        <p:outputLabel value="Nome" for="proNom"/>
-                        <p:message for="proNom"/>
+                        <p:outputLabel value="Nome" for="cooNom"/>
+                        <p:message for="cooNom"/>
                     </h:panelGrid>
-                    <p:inputText id="proNom" size="67" required="true" requiredMessage="#{mensagens.require}" value="#{professorMb.pessoa.nome}" />
+                    <p:inputText id="cooNom" size="67" required="true" requiredMessage="#{mensagens.require}" value="#{coordenadorMb.pessoa.nome}" />
                 </h:panelGrid>
             </h:panelGrid>
 
@@ -40,7 +40,7 @@ and open the template in the editor.
                         <p:outputLabel value="Email" for="email"/>
                         <p:message for="email"/>
                     </h:panelGrid>
-                    <p:inputText id="email" size="56" required="true" requiredMessage="#{mensagens.require}" value="#{professorMb.pessoa.email}" />
+                    <p:inputText id="email" size="56" required="true" requiredMessage="#{mensagens.require}" value="#{coordenadorMb.pessoa.email}" />
                 </h:panelGrid>
                 <h:panelGrid columns="1" cellspacing="5"  >
                     <h:panelGrid width="100%">
@@ -48,8 +48,8 @@ and open the template in the editor.
                             <p:outputLabel  value="Sexo"/>
                             <p:message for="sex" showDetail="true"  />
                         </h:panelGrid>
-                        <p:selectOneMenu id="sex" required="true"  value="#{professorMb.sexo}" style="width: 150px">
-                            <f:selectItems value="#{professorMb.sexos()}" />
+                        <p:selectOneMenu id="sex" required="true"  value="#{coordenadorMb.sexo}" style="width: 150px">
+                            <f:selectItems value="#{coordenadorMb.sexos()}" />
                         </p:selectOneMenu>
                     </h:panelGrid>
                 </h:panelGrid>
@@ -57,16 +57,16 @@ and open the template in the editor.
 
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
                 <h:outputText value="Cursos: " />  
-                <p:selectOneRadio id="grid" value="" layout="grid" columns="3">  
+                <p:selectOneRadio id="grid" value="#{coordenadorMb.listarNome()}" layout="grid" columns="3">  
                     <f:selectItems value=""/>  
                 </p:selectOneRadio>  
             </h:panelGrid>  
 
         </h:panelGrid>
         <h:panelGrid  columns="3" cellspacing="22" cellpadding="2">
-            <p:commandButton value="Salvar" icon="ui-icon-disk" action="#{professorMb.salvar()}"   update=":frmGeral"/>
-            <p:commandButton icon="ui-icon-search" value="Listagem"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisProfessor'], label['lisProfessor'])}" immediate="true" />
-            <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" immediate="true" update=":frmGeral:grd" action="#{professorMb.iniciar()}" >
+            <p:commandButton value="Salvar" icon="ui-icon-disk" action="#{coordenadorMb.salvar()}"   update=":frmGeral"/>
+            <p:commandButton icon="ui-icon-search" value="Listagem"  action="#{beanUtilitario.redirecionarPagina(navegacao['lisCoordenador'], label['lisCoordenador'])}" immediate="true" />
+            <p:commandButton icon="ui-icon-arrowrefresh-1-e" value="Limpar" immediate="true" update=":frmGeral:grd" action="#{coordenadorMb.iniciar()}" >
                 <p:resetInput target=":frmGeral:grd"/>
             </p:commandButton>
         </h:panelGrid>
@@ -78,7 +78,7 @@ and open the template in the editor.
 
     <ui:define name="comando">
         <p:commandButton icon="ui-icon-check" style="width: 20px;height: 20px;" immediate="true" update=":frmGeral:grdCur" title="Selecionar"   oncomplete="dialogConsultaCurso.hide();">
-            <f:setPropertyActionListener value="#{t}" target="#{professorMb.professor.curso}"/>
+            <f:setPropertyActionListener value="#{t}" target="#{coordenadorMb.coordenador.curso}"/>
         </p:commandButton>
     </ui:define>
 </ui:composition>
