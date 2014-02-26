@@ -30,7 +30,7 @@ public class Professor implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
-    private List curso;
+    private List<Curso> curso;
 
     public String getMatrciula() {
         return matrciula;
@@ -48,13 +48,14 @@ public class Professor implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public List getCurso() {
+    public List<Curso> getCurso() {
         return curso;
     }
 
-    public void setCurso(List curso) {
+    public void setCurso(List<Curso> curso) {
         this.curso = curso;
     }
+
 
     @Override
     public int hashCode() {
