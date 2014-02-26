@@ -3,12 +3,15 @@ package br.com.formchristus.modelo;
 import java.util.Date;
 import br.com.formchristus.modelo.Campus;
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +27,7 @@ public class AtividadeComplementar implements Serializable {
     @Id
     @Column(name = "atv_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank
     @Column(name = "atv_nome", nullable = false)
@@ -42,16 +45,19 @@ public class AtividadeComplementar implements Serializable {
     @Column(name = "atv_local", nullable = false)
     private String local;
 
-    @Embedded
+    @ManyToOne
+    @JoinColumn(name = "cam_id",referencedColumnName = "cam_id",nullable = false)
     private Campus campus;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+   
 
     public String getNome() {
         return nome;
@@ -95,8 +101,8 @@ public class AtividadeComplementar implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + (int) (this.id ^ (this.id >>> 32));
+        int hash = 5;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -109,10 +115,12 @@ public class AtividadeComplementar implements Serializable {
             return false;
         }
         final AtividadeComplementar other = (AtividadeComplementar) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
+
+    
 
 }

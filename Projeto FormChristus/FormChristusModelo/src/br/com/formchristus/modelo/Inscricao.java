@@ -3,6 +3,7 @@ package br.com.formchristus.modelo;
 import br.com.formchristus.modelo.Aluno;
 import br.com.formchristus.modelo.AtividadeComplementar;
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Inscricao implements Serializable {
     @Id
     @Column(name = "ins_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @OneToMany
     @JoinColumn(name = "alu_matricula", referencedColumnName = "alu_matricula", nullable = false)
     private Aluno aluno;
@@ -32,13 +33,15 @@ public class Inscricao implements Serializable {
     @JoinColumn(name = "atv_id", referencedColumnName = "atv_id", nullable = false)
     private AtividadeComplementar atividade;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+ 
 
     public Aluno getAluno() {
         return aluno;
@@ -58,8 +61,8 @@ public class Inscricao implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + (int) (this.id ^ (this.id >>> 32));
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -72,10 +75,12 @@ public class Inscricao implements Serializable {
             return false;
         }
         final Inscricao other = (Inscricao) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
+
+  
 
 }
