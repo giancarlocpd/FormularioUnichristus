@@ -9,6 +9,8 @@
     <class>br.com.formchristus.modelo.Usuario</class>
     <class>br.com.formchristus.modelo.Coordenador</class>
     <class>br.com.formchristus.modelo.Professor</class>
+    <class>br.com.formchristus.modelo.AtividadeComplementar</class>
+    <class>br.com.formchristus.modelo.TipoAtividadeComplementar</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.show_sql" value="true"/>
